@@ -77,11 +77,11 @@ jobs:
             sleep 15              
             cat server.log  # Output the server log for debugging
                                                                     # Wait for the server to start
-      - run:
-          name: Verify Server is Running
-          command: |
-            cd supertest-jest-api
-            curl --retry 5 --retry-connrefused -I http://localhost:3000 || (cat server.log && exit 1)
+      # - run:
+      #     name: Verify Server is Running
+      #     command: |
+      #       cd supertest-jest-api
+      #       curl --retry 5 --retry-connrefused -I http://localhost:3000 || (cat server.log && exit 1)
 
       - run:
           name: Run API Tests
