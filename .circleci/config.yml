@@ -66,4 +66,4 @@ workflows:
   pipeline:
     jobs:
       - ui_tests
-      - api_tests:
+      - api_tests
