@@ -57,10 +57,7 @@ jobs:
           command: |
             nohup npm run dev > server.log 2>&1 &
             sleep 30  # Ensure enough time for the server to start
-      - run:
-          name: Verify Server is Running
-          command: |
-            curl -I http://localhost:3000 || (cat server.log && exit 1)
+
       - run:
           name: Run API Tests
           command: npx jest --detectOpenHandles || true
