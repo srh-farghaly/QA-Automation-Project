@@ -30,6 +30,11 @@ jobs:
             cd QA-automation-Task
             npm install
       - run:
+          name: Fix Permissions for Jest
+          command: |
+            cd supertest-jest-api
+            chmod +x node_modules/.bin/jest  # Ensure Jest is executable
+      - run:
           name: Fix permissions
           command: |
             cd QA-automation-Task
