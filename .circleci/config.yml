@@ -14,7 +14,7 @@ jobs:
             sudo apt-get install -y chromium-browser chromium-chromedriver
       - run:
           name: Verify Chrome version
-          command: google-chrome --version # Debug step to verify Chrome version
+          command: chromium-browser --version # Debug step to verify Chrome version
       - run:
           name: List root directory files
           command: ls -l
