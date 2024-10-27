@@ -64,6 +64,12 @@ jobs:
             cd supertest-jest-api
             chmod +x node_modules/.bin/jest  # Ensure Jest is executable
       - run:
+          name: Fix Permissions for Nodemon
+          command: |
+            cd supertest-jest-api
+            chmod +x ./node_modules/.bin/nodemon
+            chmod -R 755 node_modules
+      - run:
           name: Start API Server
           command: |
             cd supertest-jest-api
