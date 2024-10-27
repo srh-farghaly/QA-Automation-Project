@@ -30,6 +30,12 @@ jobs:
             cd QA-automation-Task
             npm install
       - run:
+          name: Fix permissions
+          command: |
+            cd QA-automation-Task
+            chmod -R 755 node_modules/.bin
+
+      - run:
           name: Run Nightwatch Tests
           command: |
             cd QA-automation-Task
