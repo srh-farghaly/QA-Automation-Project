@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="0">
+
+  <testsuite name="descriptionUnderdropdown"
+    errors="1" failures="0" hostname="" id="" package="descriptionUnderdropdown" skipped="1"
+    tests="0" time="0.000" timestamp="">
+  
+
+  
+    <system-err>
+       An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+ An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+  Verify if ChromeDriver is configured correctly; using:
+  {
+     start_process: true,
+     server_path: &#39;/usr/bin/chromedriver&#39;,
+     port: 9515,
+     host: &#39;localhost&#39;,
+     ssl: false,
+     default_path_prefix: &#39;&#39;,
+     proxy: undefined,
+     cli_args: {}
+  }
+
+ 
+  Set webdriver.log_path in your Nightwatch config to retrieve more logs from ChromeDriver.
+    </system-err>
+  
+
+    
+    <error message="An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT"><![CDATA[
+      Error: An error occurred while creating a new ChromeDriver session: [Error] spawn /usr/bin/chromedriver ENOENT
+    at D:\QA-Automation-Project\QA-automation-Task\node_modules\selenium-webdriver\remote\index.js:256:70
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      ]]></error>  
+
+  
+    
+    <testcase
+      name="Validate Descriptive Text" classname="descriptionUnderdropdown">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

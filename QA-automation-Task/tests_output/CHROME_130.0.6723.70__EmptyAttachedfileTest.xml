@@ -5,9 +5,9 @@
 
   <testsuite name="EmptyAttachedfileTest"
     errors="0" failures="0" hostname="" id="" package="EmptyAttachedfileTest" skipped="0"
-    tests="1" time="27.23" timestamp="">
+    tests="1" time="28.01" timestamp="">
   
-    <testcase name="File Attachment Left Empty Test" classname="EmptyAttachedfileTest" time="13.61" assertions="3">
+    <testcase name="File Attachment Left Empty Test" classname="EmptyAttachedfileTest" time="14.01" assertions="3">
 
     
 
