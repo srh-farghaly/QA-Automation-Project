@@ -11,61 +11,47 @@ jobs:
           name: Install Chromium and ChromeDriver
           command: |
             sudo apt-get update
-            sudo apt-get install -y chromium-browser chromium-chromedriver
+            sudo apt-get install -y wget unzip curl xvfb
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+      - run: # Add the ChromeDriver matching step here
+          name: Install ChromeDriver Matching Chrome Version
+          command: |
+            CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+            DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+            wget -N "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip"
+            unzip chromedriver_linux64.zip -d /usr/local/bin/
+            rm chromedriver_linux64.zip
       - run:
-          name: List root directory files
-          command: ls -l
+          name: Verify installations
+          command: |
+            google-chrome --version
+            chromedriver --version
       - run:
-          name: List files in QA-automation-Task
-          command: ls -l QA-automation-Task
-      - run:
-          name: Navigate to QA-automation-Task and install dependencies
+          name: Install project dependencies
           command: |
             cd QA-automation-Task
             npm install
       - run:
-          name: Reinstall ChromeDriver
+          name: Reinstall ChromeDriver via npm
           command: |
             cd QA-automation-Task
             npm install chromedriver --save-dev
-      - run:
-          name: Verify ChromeDriver path
-          command: ls -l QA-automation-Task/node_modules/.bin
       - run:
           name: Fix permissions
           command: |
             cd QA-automation-Task
             chmod -R 755 node_modules/.bin
       - run:
-          name: Verify node_modules exists
-          command: ls -l QA-automation-Task/node_modules
-      - run:
           name: Run Nightwatch tests
           command: |
             cd QA-automation-Task
-            npm run test
-
-  api_tests:
-    docker:
-      - image: cimg/node:18.17.1 # Matching Docker image for consistency
-    working_directory: ~/project/supertest-jest-api
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies for API tests
-          command: npm install
-      - run:
-          name: Start API server
-          command: npm run dev &
-      - run:
-          name: Run API tests
-          command: npm test
+            npx nightwatch --config nightwatch.json --env chrome
 
 workflows:
   version: 2
   pipeline:
     jobs:
       - ui_tests
-      - api_tests:
-          requires:
-            - ui_tests

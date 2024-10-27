@@ -5,9 +5,9 @@
 
   <testsuite name="EmptyOrderrefTest"
     errors="0" failures="0" hostname="" id="" package="EmptyOrderrefTest" skipped="0"
-    tests="1" time="28.50" timestamp="">
+    tests="1" time="27.86" timestamp="">
   
-    <testcase name="Empty Order Reference Test" classname="EmptyOrderrefTest" time="14.25" assertions="3">
+    <testcase name="Empty Order Reference Test" classname="EmptyOrderrefTest" time="13.93" assertions="3">
 
     
 
