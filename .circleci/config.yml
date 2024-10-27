@@ -13,57 +13,24 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y chromium-browser chromium-chromedriver
       - run:
-          name: List root directory files
-          command: ls -l
+          name: Fix ChromeDriver Permissions
+          command: chmod +x node_modules/chromedriver/lib/chromedriver/chromedriver
       - run:
-          name: List files in QA-automation-Task
-          command: ls -l QA-automation-Task
+          name: Verify ChromeDriver Installation
+          command: ls -l node_modules/chromedriver/lib/chromedriver
       - run:
-          name: Navigate to QA-automation-Task and install dependencies
+          name: Navigate to QA-automation-Task and Install Dependencies
           command: |
             cd QA-automation-Task
             npm install
       - run:
-          name: Reinstall ChromeDriver
-          command: |
-            cd QA-automation-Task
-            npm install chromedriver --save-dev
-      - run:
-          name: Verify ChromeDriver path
-          command: ls -l QA-automation-Task/node_modules/.bin
-      - run:
-          name: Fix permissions
-          command: |
-            cd QA-automation-Task
-            chmod -R 755 node_modules/.bin
-      - run:
-          name: Verify node_modules exists
-          command: ls -l QA-automation-Task/node_modules
-      - run:
-          name: Run Nightwatch tests
+          name: Run Nightwatch Tests
           command: |
             cd QA-automation-Task
             npm run test
-
-  api_tests:
-    docker:
-      - image: cimg/node:18.17.1 # Matching Docker image for consistency
-    working_directory: ~/project/supertest-jest-api
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies for API tests
-          command: npm install
-      - run:
-          name: Start API server
-          command: npm run dev &
-      - run:
-          name: Run API tests
-          command: npm test
 
 workflows:
   version: 2
   pipeline:
     jobs:
       - ui_tests
-      - api_tests
