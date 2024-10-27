@@ -18,6 +18,11 @@ jobs:
           command: |
             cd QA-automation-Task
             npm install
+      - run: # Add Fix Permissions step here
+          name: Fix permissions
+          command: |
+            cd QA-automation-Task
+            chmod -R 755 node_modules/.bin
       - run:
           name: Verify node_modules exists
           command: ls -l QA-automation-Task/node_modules
