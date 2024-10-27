@@ -8,15 +8,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Chrome and ChromeDriver
+          name: Install Chromium and ChromeDriver
           command: |
             sudo apt-get update
             sudo apt-get install -y chromium-browser chromium-chromedriver
       - run:
-          name: Verify Chrome version
-          command: |
-            snap install chromium
-            chromium-browser --version # Debug step to verify Chrome version
+          name: Verify Chromium version
+          command: chromium-browser --version # Use the correct binary name
       - run:
           name: List root directory files
           command: ls -l
@@ -28,15 +26,15 @@ jobs:
           command: |
             cd QA-automation-Task
             npm install
-      - run: # Add the ChromeDriver reinstallation step here
+      - run:
           name: Reinstall ChromeDriver
           command: |
             cd QA-automation-Task
             npm install chromedriver --save-dev
-      - run: # Optional: Verify if ChromeDriver is installed
+      - run:
           name: Verify ChromeDriver path
           command: ls -l QA-automation-Task/node_modules/.bin
-      - run: # Add Fix Permissions step here
+      - run:
           name: Fix permissions
           command: |
             cd QA-automation-Task
@@ -58,8 +56,7 @@ jobs:
       - checkout
       - run:
           name: Install dependencies for API tests
-          command: |
-            npm install
+          command: npm install
       - run:
           name: Start API server
           command: npm run dev &
