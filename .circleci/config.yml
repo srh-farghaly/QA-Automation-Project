@@ -8,6 +8,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Chrome and ChromeDriver
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y chromium-browser chromium-chromedriver
+      - run:
           name: List root directory files
           command: ls -l
       - run:
