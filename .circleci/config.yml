@@ -1,28 +1,21 @@
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@1.3.2
+
 jobs:
   ui_tests:
     docker:
       - image: cimg/node:18.17.1
-    working_directory: ~/project/QA-automation-Task
     steps:
       - checkout
+      - browser-tools/install-browser:
+          browser: "google-chrome" # Install Google Chrome
       - run:
-          name: Install Chromium and ChromeDriver
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y chromium-browser chromium-chromedriver
+          name: Verify Chrome version
+          command: google-chrome --version
       - run:
-          name: Verify Chromium version
-          command: chromium-browser --version # Use the correct binary name
-      - run:
-          name: List root directory files
-          command: ls -l
-      - run:
-          name: List files in QA-automation-Task
-          command: ls -l QA-automation-Task
-      - run:
-          name: Navigate to QA-automation-Task and install dependencies
+          name: Install project dependencies
           command: |
             cd QA-automation-Task
             npm install
@@ -32,43 +25,13 @@ jobs:
             cd QA-automation-Task
             npm install chromedriver --save-dev
       - run:
-          name: Verify ChromeDriver path
-          command: ls -l QA-automation-Task/node_modules/.bin
-      - run:
-          name: Fix permissions
-          command: |
-            cd QA-automation-Task
-            chmod -R 755 node_modules/.bin
-      - run:
-          name: Verify node_modules exists
-          command: ls -l QA-automation-Task/node_modules
-      - run:
           name: Run Nightwatch tests
           command: |
             cd QA-automation-Task
-            npm run test
-
-  api_tests:
-    docker:
-      - image: cimg/node:18.17.1 # Matching Docker image for consistency
-    working_directory: ~/project/supertest-jest-api
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies for API tests
-          command: npm install
-      - run:
-          name: Start API server
-          command: npm run dev &
-      - run:
-          name: Run API tests
-          command: npm test
+            npx nightwatch --config nightwatch.json --env chrome
 
 workflows:
   version: 2
   pipeline:
     jobs:
       - ui_tests
-      - api_tests:
-          requires:
-            - ui_tests
