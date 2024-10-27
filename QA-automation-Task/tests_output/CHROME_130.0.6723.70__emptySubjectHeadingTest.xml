@@ -5,9 +5,9 @@
 
   <testsuite name="emptySubjectHeadingTest"
     errors="0" failures="0" hostname="" id="" package="emptySubjectHeadingTest" skipped="0"
-    tests="1" time="25.51" timestamp="">
+    tests="1" time="26.32" timestamp="">
   
-    <testcase name="Empty Subject Heading Test" classname="emptySubjectHeadingTest" time="12.75" assertions="3">
+    <testcase name="Empty Subject Heading Test" classname="emptySubjectHeadingTest" time="13.16" assertions="3">
 
     
 

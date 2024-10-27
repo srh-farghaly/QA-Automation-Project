@@ -5,9 +5,9 @@
 
   <testsuite name="emptyMessage"
     errors="0" failures="0" hostname="" id="" package="emptyMessage" skipped="0"
-    tests="1" time="42.60" timestamp="">
+    tests="1" time="49.90" timestamp="">
   
-    <testcase name="Empty Message Field Test" classname="emptyMessage" time="21.30" assertions="3">
+    <testcase name="Empty Message Field Test" classname="emptyMessage" time="24.95" assertions="3">
 
     
 
