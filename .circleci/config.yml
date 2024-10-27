@@ -1,34 +1,31 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@4.7.0
-  browser-tools: circleci/browser-tools@1.1.0
-
 jobs:
   ui_tests:
     docker:
-      - image: cimg/node:lts-browsers # Pre-installed browsers with Node.js
-    working_directory: ~/project/QA-automation-Task
+      - image: cimg/node:18.17.1 # Same Node.js version as your local machine
+    working_directory: ~/project/QA-automation-Task # Ensure this matches
     steps:
-      - checkout # Pull the latest code from your repository
-      - browser-tools/install-browser-tools # Install browser tools
-      - node/install-packages # Install dependencies from package.json
+      - checkout
       - run:
-          name: Verify config file
-          command: ls -l nightwatch.json
+          name: Install dependencies for UI tests
+          command: npm install # Install all dependencies
+      - run:
+          name: Verify folder contents
+          command: ls -l # Confirm files are correctly listed
       - run:
           name: Run Nightwatch tests
-          command: |
-            mv nightwatch.json nightwatch.conf.js  # Rename the config if necessary
-            npx nightwatch --config nightwatch.conf.js --env default
+          command: npm run test # Use the same command that worked locally
 
   api_tests:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:18.17.1 # Keep the version consistent
     working_directory: ~/project/supertest-jest-api
     steps:
       - checkout
-      - node/install-packages # Install dependencies for API tests
+      - run:
+          name: Install dependencies for API tests
+          command: npm install
       - run:
           name: Start API server
           command: npm run dev &
@@ -38,9 +35,9 @@ jobs:
 
 workflows:
   version: 2
-  e2e-test:
+  pipeline:
     jobs:
-      - ui_tests
+      - ui_tests # Ensure UI tests run first
       - api_tests:
           requires:
-            - ui_tests
+            - ui_tests # API tests depend on UI test success
