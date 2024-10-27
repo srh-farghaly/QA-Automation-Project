@@ -5,9 +5,9 @@
 
   <testsuite name="invalidFiletype"
     errors="0" failures="0" hostname="" id="" package="invalidFiletype" skipped="0"
-    tests="1" time="31.49" timestamp="">
+    tests="1" time="30.41" timestamp="">
   
-    <testcase name="Invalid File Type Test" classname="invalidFiletype" time="15.74" assertions="3">
+    <testcase name="Invalid File Type Test" classname="invalidFiletype" time="15.20" assertions="3">
 
     
 

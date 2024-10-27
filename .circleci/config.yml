@@ -23,7 +23,7 @@ jobs:
           command: ls -l QA-automation-Task/node_modules
       - run:
           name: Run Nightwatch tests
-          command: npx nightwatch test
+          command: npm run test
 
   api_tests:
     docker:
