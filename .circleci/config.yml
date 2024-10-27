@@ -4,31 +4,45 @@ jobs:
   ui_tests:
     docker:
       - image: node:18.17.1-buster
-    working_directory: ~/project/QA-automation-Task
     steps:
       - checkout
       - run:
+          name: Navigate to QA-automation-Task folder
+          command: cd QA-automation-Task && ls -l # Verify folder contents
+      - run:
           name: Install dependencies for UI tests
-          command: npm install
+          command: |
+            cd QA-automation-Task
+            npm install
       - run:
           name: Run Nightwatch tests
-          command: npx nightwatch test # Use the command you run locally
+          command: |
+            cd QA-automation-Task
+            npx nightwatch test
 
   api_tests:
     docker:
       - image: node:18.17.1-buster
-    working_directory: ~/project/supertest-jest-api
     steps:
       - checkout
       - run:
+          name: Navigate to API folder
+          command: cd supertest-jest-api && ls -l # Verify folder contents
+      - run:
           name: Install dependencies for API tests
-          command: npm install
+          command: |
+            cd supertest-jest-api
+            npm install
       - run:
           name: Start API server
-          command: npm run dev &
+          command: |
+            cd supertest-jest-api
+            npm run dev &
       - run:
           name: Run API tests
-          command: npm test
+          command: |
+            cd supertest-jest-api
+            npm test
 
 workflows:
   version: 2
