@@ -1,0 +1,34 @@
+version: 2.1
+
+jobs:
+  ui_tests:
+    docker:
+      - image: cypress/base:12 # Relevant Docker image for UI tests
+    steps:
+      - checkout
+      - run:
+          name: Navigate to UI test folder
+          command: cd QA-automation-Task
+      - run: npm install # Install dependencies in UI folder
+      - run: npx nightwatch test # Run Nightwatch UI tests
+
+  api_tests:
+    docker:
+      - image: node:14 # Relevant Docker image for API tests
+    steps:
+      - checkout
+      - run:
+          name: Navigate to API test folder
+          command: cd supertest-jest-api
+      - run: npm install # Install dependencies in API folder
+      - run: npm run dev & # Start the API server in the background
+      - run: npm test # Run API tests
+
+workflows:
+  version: 2
+  pipeline: # Workflow name
+    jobs:
+      - ui_tests # UI tests run first
+      - api_tests:
+          requires:
+            - ui_tests # API tests depend on UI tests passing
