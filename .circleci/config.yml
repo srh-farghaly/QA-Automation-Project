@@ -7,18 +7,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Navigate to QA-automation-Task folder
-          command: cd QA-automation-Task && ls -l # Verify folder contents
+          name: Verify folder contents
+          command: ls -l QA-automation-Task
       - run:
-          name: Install dependencies for UI tests
-          command: |
-            cd QA-automation-Task
-            npm install
+          name: Grant execute permission to Nightwatch
+          command: chmod +x node_modules/.bin/nightwatch
       - run:
           name: Run Nightwatch tests
-          command: |
-            cd QA-automation-Task
-            npx nightwatch test
+          command: ./node_modules/.bin/nightwatch test
 
   api_tests:
     docker:
@@ -26,23 +22,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Navigate to API folder
-          command: cd supertest-jest-api && ls -l # Verify folder contents
-      - run:
           name: Install dependencies for API tests
-          command: |
-            cd supertest-jest-api
-            npm install
+          command: npm install
       - run:
           name: Start API server
-          command: |
-            cd supertest-jest-api
-            npm run dev &
+          command: npm run dev &
       - run:
           name: Run API tests
-          command: |
-            cd supertest-jest-api
-            npm test
+          command: npm test
 
 workflows:
   version: 2
