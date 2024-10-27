@@ -3,42 +3,38 @@ version: 2.1
 jobs:
   ui_tests:
     docker:
-      - image: node:18.17.1-buster # Ensure compatibility with your Node version
+      - image: node:18.17.1-buster # Use the same version as your local machine
+    working_directory: ~/QA-automation-Task # Set working directory for UI tests
     steps:
       - checkout
       - run:
-          name: Navigate to UI test folder
-          command: cd QA-automation-Task
-      - run:
           name: Install dependencies
-          command: npm install
+          command: npm install # Install Nightwatch and other dependencies
       - run:
           name: Run Nightwatch tests
           command: npx nightwatch --config nightwatch.json --env chrome
 
   api_tests:
     docker:
-      - image: node:18.17.1-buster
+      - image: node:18.17.1-buster # Same version to avoid compatibility issues
+    working_directory: ~/supertest-jest-api # Set working directory for API tests
     steps:
       - checkout
       - run:
-          name: Navigate to API test folder
-          command: cd supertest-jest-api
-      - run:
           name: Install dependencies
-          command: npm install
+          command: npm install # Install API test dependencies
       - run:
           name: Start API server
-          command: npm run dev &
+          command: npm run dev & # Start server in the background
       - run:
           name: Run API tests
-          command: npm test
+          command: npm test # Run API tests
 
 workflows:
   version: 2
   pipeline:
     jobs:
-      - ui_tests
+      - ui_tests # Run UI tests first
       - api_tests:
           requires:
-            - ui_tests
+            - ui_tests # Ensure API tests run after UI tests pass
