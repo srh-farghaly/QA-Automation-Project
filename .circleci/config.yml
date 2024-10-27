@@ -41,25 +41,25 @@ jobs:
             npm run test || true  # Prevent failure on known bugs
 
   api_tests:
-  docker:
-    - image: cimg/node:18.17.1
-  working_directory: ~/project/supertest-jest-api
-  steps:
-    - checkout
-    - run:
-        name: Install mock-user-auth package
-        command: npm install --save mock-user-auth
-    - run:
-        name: Install Dependencies
-        command: npm install
-    - run:
-        name: Start API Server
-        command: |
-          npm run dev &
-          sleep 10  # Give the server some time to start
-    - run:
-        name: Run API Tests
-        command: npx jest --detectOpenHandles || true
+    docker:
+      - image: cimg/node:18.17.1
+    working_directory: ~/project/supertest-jest-api
+    steps:
+      - checkout
+      - run:
+          name: Install mock-user-auth package
+          command: npm install --save mock-user-auth
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Start API Server
+          command: |
+            npm run dev &
+            sleep 10  # Give the server some time to start
+      - run:
+          name: Run API Tests
+          command: npx jest --detectOpenHandles || true
 
 workflows:
   version: 2
@@ -67,5 +67,3 @@ workflows:
     jobs:
       - ui_tests
       - api_tests:
-          requires:
-            - ui_tests
