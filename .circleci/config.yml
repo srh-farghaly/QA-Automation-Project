@@ -3,19 +3,16 @@ version: 2.1
 jobs:
   ui_tests:
     docker:
-      - image: node:18.17.1-buster # Use the same Node.js version as local
-    working_directory: ~/project/QA-automation-Task # Set working directory for UI tests
+      - image: node:18.17.1-buster
+    working_directory: ~/project/QA-automation-Task
     steps:
       - checkout
       - run:
+          name: Install dependencies for UI tests
+          command: npm install # Install all dependencies in the correct directory
+      - run:
           name: Verify node_modules exists
           command: ls -l node_modules
-      - run:
-          name: Install dependencies for UI tests
-          command: npm install
-      - run:
-          name: Verify Nightwatch binary exists
-          command: ls -l node_modules/.bin/nightwatch
       - run:
           name: Run Nightwatch tests from 'test' folder
           command: ./node_modules/.bin/nightwatch ./test --config nightwatch.json --env default
