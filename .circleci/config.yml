@@ -1,31 +1,37 @@
 version: 2.1
 
+orbs:
+  node: circleci/node@4.7.0
+  browser-tools: circleci/browser-tools@1.1.0
+
 jobs:
   ui_tests:
     docker:
-      - image: cimg/node:18.17.1 # Same Node.js version as your local machine
-    working_directory: ~/project/QA-automation-Task # Ensure this matches
+      - image: cimg/node:lts-browsers # Use Node.js with browsers pre-installed
+    working_directory: ~/project/QA-automation-Task
     steps:
-      - checkout
+      - checkout # Pull the latest code
+      - browser-tools/install-browser-tools # Install browser tools
       - run:
-          name: Install dependencies for UI tests
-          command: npm install # Install all dependencies
+          name: Install ChromeDriver via npm
+          command: npm install chromedriver --save-dev # Install ChromeDriver
+      - node/install-packages # Install project dependencies
       - run:
-          name: Verify folder contents
-          command: ls -l # Confirm files are correctly listed
+          name: Verify config file
+          command: ls -l nightwatch.json # Ensure config file exists
       - run:
           name: Run Nightwatch tests
-          command: npm run test # Use the same command that worked locally
+          command: |
+            mv nightwatch.json nightwatch.conf.js  # Rename config if needed
+            npx nightwatch --config nightwatch.conf.js --env default
 
   api_tests:
     docker:
-      - image: cimg/node:18.17.1 # Keep the version consistent
+      - image: cimg/node:lts # Use a standard Node.js image for API tests
     working_directory: ~/project/supertest-jest-api
     steps:
       - checkout
-      - run:
-          name: Install dependencies for API tests
-          command: npm install
+      - node/install-packages # Install dependencies
       - run:
           name: Start API server
           command: npm run dev &
@@ -35,9 +41,9 @@ jobs:
 
 workflows:
   version: 2
-  pipeline:
+  e2e-test:
     jobs:
-      - ui_tests # Ensure UI tests run first
+      - ui_tests
       - api_tests:
           requires:
-            - ui_tests # API tests depend on UI test success
+            - ui_tests
