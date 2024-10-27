@@ -1,9 +1,11 @@
 version: 2.1
+orbs:
+  node: circleci/node@18.17.1
 
 jobs:
   ui_tests:
     docker:
-      - image: node:18.17.1-buster
+      - image: cimg/node:18.17.1
     working_directory: ~/project/QA-automation-Task
     steps:
       - checkout
@@ -19,7 +21,7 @@ jobs:
 
   api_tests:
     docker:
-      - image: node:18.17.1-buster
+      - image: node:18.17.1
     working_directory: ~/project/supertest-jest-api
     steps:
       - checkout
