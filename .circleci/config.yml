@@ -10,8 +10,14 @@ jobs:
     working_directory: ~/project/QA-automation-Task
     steps:
       - checkout
-      - browser-tools/install-browser-tools:
-          browsers: google-chrome-stable # This installs Chrome and ChromeDriver.
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          name: Verify Chrome Installation
+          command: google-chrome --version
+      - run:
+          name: Verify ChromeDriver Installation
+          command: chromedriver --version
       - run:
           name: List root directory files
           command: ls -l
@@ -19,13 +25,10 @@ jobs:
           name: List files in QA-automation-Task
           command: ls -l QA-automation-Task
       - run:
-          name: Navigate to QA-automation-Task and install dependencies
+          name: Install Dependencies
           command: |
             cd QA-automation-Task
             npm install
-      - run:
-          name: Verify ChromeDriver Installation
-          command: chromedriver --version
       - run:
           name: Run Nightwatch Tests
           command: |
@@ -39,13 +42,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies for API tests
+          name: Install Dependencies
           command: npm install
       - run:
-          name: Start API server
+          name: Start API Server
           command: npm run dev &
       - run:
-          name: Run API tests
+          name: Run API Tests
           command: npm test
 
 workflows:
