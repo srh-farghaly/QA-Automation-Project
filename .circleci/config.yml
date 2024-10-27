@@ -4,7 +4,7 @@ jobs:
   ui_tests:
     docker:
       - image: cimg/node:18.17.1
-    working_directory: ~/project
+    working_directory: ~/project/QA-automation-Task
     steps:
       - checkout
       - run:
@@ -23,6 +23,7 @@ jobs:
           command: ls -l QA-automation-Task/node_modules
       - run:
           name: Run Nightwatch tests
+            cd QA-automation-Task
           command: npm run test
 
   api_tests:
