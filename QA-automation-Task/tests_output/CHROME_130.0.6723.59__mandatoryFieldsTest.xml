@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="mandatoryFieldsTest"
+    errors="0" failures="0" hostname="" id="" package="mandatoryFieldsTest" skipped="0"
+    tests="1" time="33.59" timestamp="">
+  
+    <testcase name="Mandatory Fields Submission Test" classname="mandatoryFieldsTest" time="16.79" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

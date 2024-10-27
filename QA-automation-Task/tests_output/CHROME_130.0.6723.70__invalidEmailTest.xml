@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="invalidEmailTest"
+    errors="0" failures="1" hostname="" id="" package="invalidEmailTest" skipped="0"
+    tests="1" time="50.48" timestamp="">
+  
+    <testcase name="Invalid Email Test" classname="invalidEmailTest" time="25.24" assertions="2">
+
+      <failure message="Timed out while waiting for element &lt;.alert-danger&gt; to be present for 7000 milliseconds. - expected &#34;visible&#34; but got: &#34;not found&#34; (7301ms)">    at Invalid Email Test (D:\QA-Automation-Project\QA-automation-Task\test\invalidEmailTest.js:23:8)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>
