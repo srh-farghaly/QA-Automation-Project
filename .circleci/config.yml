@@ -39,6 +39,7 @@ jobs:
           command: |
             cd QA-automation-Task
             npm run test || true
+
   api_tests:
     docker:
       - image: cimg/node:18.17.1
@@ -55,7 +56,7 @@ jobs:
           name: Start API Server
           command: |
             npm run dev &
-            sleep 10
+            sleep 10  # Give the server some time to start
       - run:
           name: Run API Tests
           command: npx jest --detectOpenHandles || true
@@ -66,3 +67,5 @@ workflows:
     jobs:
       - ui_tests
       - api_tests:
+          requires:
+            - ui_tests
