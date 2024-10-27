@@ -4,24 +4,23 @@ jobs:
   ui_tests:
     docker:
       - image: cypress/base:12 # Relevant Docker image for UI tests
+    working_directory: ~/QA-automation-Task # Set working directory for UI tests
     steps:
-      - checkout
-      - run:
-          name: Navigate to UI test folder
-          command: cd QA-automation-Task
-      - run: npm install # Install dependencies in UI folder
+      - checkout # Check out the code from GitHub
+      - run: npm install # Install dependencies in the UI folder
       - run: npx nightwatch test # Run Nightwatch UI tests
 
   api_tests:
     docker:
       - image: node:14 # Relevant Docker image for API tests
+    working_directory: ~/supertest-jest-api # Set working directory for API tests
     steps:
-      - checkout
-      - run:
-          name: Navigate to API test folder
-          command: cd supertest-jest-api
+      - checkout # Check out the code from GitHub
       - run: npm install # Install dependencies in API folder
-      - run: npm run dev & # Start the API server in the background
+      - run: |
+          echo "Starting API server..."
+          npm run dev &  # Start the API server in the background
+          sleep 5  # Wait a few seconds to ensure the server is up
       - run: npm test # Run API tests
 
 workflows:
@@ -31,4 +30,4 @@ workflows:
       - ui_tests # UI tests run first
       - api_tests:
           requires:
-            - ui_tests # API tests depend on UI tests passing
+            - ui_tests # API tests run only after UI tests pass
