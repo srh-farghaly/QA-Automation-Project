@@ -19,21 +19,10 @@ jobs:
           name: Verify ChromeDriver Installation
           command: chromedriver --version
       - run:
-          name: List root directory files
-          command: ls -l
-      - run:
-          name: List files in QA-automation-Task
-          command: ls -l QA-automation-Task
-      - run:
           name: Install Dependencies
           command: |
             cd QA-automation-Task
             npm install
-      - run:
-          name: Fix permissions
-          command: |
-            cd QA-automation-Task
-            chmod -R 755 node_modules/.bin
       - run:
           name: Run Nightwatch Tests
           command: |
@@ -47,7 +36,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install mock-user-auth package
+          name: Install mock-user-auth Package
           command: npm install --save mock-user-auth
       - run:
           name: Install Dependencies
@@ -55,9 +44,12 @@ jobs:
       - run:
           name: Start API Server
           command: |
-            nohup npm run dev > server.log 2>&1 &
-            sleep 30  # Ensure enough time for the server to start
-
+            nohup npm run dev > server.log 2>&1 &  # Start in background
+            sleep 10                               # Wait for the server to start
+      - run:
+          name: Verify Server is Running
+          command: |
+            curl --retry 5 --retry-connrefused -I http://localhost:3000 || (cat server.log && exit 1)
       - run:
           name: Run API Tests
           command: npx jest --detectOpenHandles || true
