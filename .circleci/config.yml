@@ -22,9 +22,11 @@ jobs:
           name: Verify node_modules exists
           command: ls -l QA-automation-Task/node_modules
       - run:
-          name: Run Nightwatch tests
-            cd QA-automation-Task
-          command: npm run test
+          - run:
+            name: Run Nightwatch tests
+            command: |
+              cd QA-automation-Task
+              npm run test
 
   api_tests:
     docker:
