@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@1.4.0
+
 jobs:
   ui_tests:
     docker:
@@ -7,30 +10,49 @@ jobs:
     working_directory: ~/project/QA-automation-Task
     steps:
       - checkout
+      - browser-tools/install-browser-tools:
+          browsers: google-chrome-stable # This installs Chrome and ChromeDriver.
       - run:
-          name: Install Chromium and ChromeDriver
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y chromium-browser chromium-chromedriver
+          name: List root directory files
+          command: ls -l
       - run:
-          name: Fix ChromeDriver Permissions
-          command: chmod +x node_modules/chromedriver/lib/chromedriver/chromedriver
+          name: List files in QA-automation-Task
+          command: ls -l QA-automation-Task
       - run:
-          name: Verify ChromeDriver Installation
-          command: ls -l node_modules/chromedriver/lib/chromedriver
-      - run:
-          name: Navigate to QA-automation-Task and Install Dependencies
+          name: Navigate to QA-automation-Task and install dependencies
           command: |
             cd QA-automation-Task
             npm install
+      - run:
+          name: Verify ChromeDriver Installation
+          command: chromedriver --version
       - run:
           name: Run Nightwatch Tests
           command: |
             cd QA-automation-Task
             npm run test
 
+  api_tests:
+    docker:
+      - image: cimg/node:18.17.1
+    working_directory: ~/project/supertest-jest-api
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies for API tests
+          command: npm install
+      - run:
+          name: Start API server
+          command: npm run dev &
+      - run:
+          name: Run API tests
+          command: npm test
+
 workflows:
   version: 2
   pipeline:
     jobs:
       - ui_tests
+      - api_tests:
+          requires:
+            - ui_tests
