@@ -3,10 +3,6 @@
   "page_objects_path": "page-objects",
   "globals_path": "./globals.js",
 
-  "selenium": {
-    "start_process": false
-  },
-
   "webdriver": {
     "start_process": true,
     "server_path": "node_modules/chromedriver/lib/chromedriver/chromedriver",
@@ -15,6 +11,15 @@
 
   "test_settings": {
     "default": {
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "chromeOptions": {
+          "args": ["--headless", "--no-sandbox", "--disable-gpu"]
+        }
+      }
+    },
+    "chrome": {
+      "extends": "default",
       "desiredCapabilities": {
         "browserName": "chrome"
       }

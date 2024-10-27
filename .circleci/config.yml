@@ -3,42 +3,38 @@ version: 2.1
 jobs:
   ui_tests:
     docker:
-      - image: cypress/base:12 # A base image with browsers included
-    working_directory: ~/project/QA-automation-Task # Correct working directory
+      - image: node:18.17.1-buster
+    working_directory: ~/project/QA-automation-Task
     steps:
       - checkout
       - run:
-          name: Verify `nightwatch.json` exists
-          command: ls -l nightwatch.json # Verify the file exists
-      - run:
           name: Install dependencies for UI tests
-          command: |
-            npm install # Install Nightwatch and other dependencies
+          command: npm install
       - run:
           name: Run Nightwatch tests
-          command: npx nightwatch --config nightwatch.json --env chrome # Run tests
+          command: npx nightwatch test # Use the command you run locally
 
   api_tests:
     docker:
-      - image: node:18.17.1-buster # Consistent Node version for API tests
-    working_directory: ~/project/supertest-jest-api # Navigate to API folder
+      - image: node:18.17.1-buster
+    working_directory: ~/project/supertest-jest-api
     steps:
       - checkout
       - run:
           name: Install dependencies for API tests
-          command: npm install # Install dependencies
+          command: npm install
       - run:
           name: Start API server
-          command: npm run dev & # Start server in the background
+          command: npm run dev &
       - run:
           name: Run API tests
-          command: npm test # Execute API tests
+          command: npm test
 
 workflows:
   version: 2
   pipeline:
     jobs:
-      - ui_tests # UI tests first
+      - ui_tests
       - api_tests:
           requires:
-            - ui_tests # API tests run after UI tests pass
+            - ui_tests
