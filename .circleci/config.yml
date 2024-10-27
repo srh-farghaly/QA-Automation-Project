@@ -3,31 +3,42 @@ version: 2.1
 jobs:
   ui_tests:
     docker:
-      - image: cypress/base:12 # Relevant Docker image for UI tests
-    working_directory: ~/QA-automation-Task # Set working directory for UI tests
+      - image: circleci/node:16-browsers # Pre-installed browser support
     steps:
-      - checkout # Check out the code from GitHub
-      - run: npm install # Install dependencies in the UI folder
-      - run: npx nightwatch test # Run Nightwatch UI tests
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            cd QA-automation-Task
+            npm install
+            npm install chromedriver --save-dev  # Ensure Chromedriver is installed
+            npm install nightwatch --save-dev   # Ensure Nightwatch is installed
+      - run:
+          name: Run Nightwatch tests
+          command: npx nightwatch test
 
   api_tests:
     docker:
-      - image: node:14 # Relevant Docker image for API tests
-    working_directory: ~/supertest-jest-api # Set working directory for API tests
+      - image: node:14
     steps:
-      - checkout # Check out the code from GitHub
-      - run: npm install # Install dependencies in API folder
-      - run: |
-          echo "Starting API server..."
-          npm run dev &  # Start the API server in the background
-          sleep 5  # Wait a few seconds to ensure the server is up
-      - run: npm test # Run API tests
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            cd supertest-jest-api
+            npm install
+      - run:
+          name: Start API server
+          command: npm run dev &
+      - run:
+          name: Run API tests
+          command: npm test
 
 workflows:
   version: 2
-  pipeline: # Workflow name
+  pipeline:
     jobs:
-      - ui_tests # UI tests run first
+      - ui_tests
       - api_tests:
           requires:
-            - ui_tests # API tests run only after UI tests pass
+            - ui_tests
