@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   ui_tests:
     docker:
-      - image: circleci/node:16-browsers # Pre-installed browser support
+      - image: node:18.17.1-buster # Matching your local Node version
     steps:
       - checkout
       - run:
@@ -11,15 +11,13 @@ jobs:
           command: |
             cd QA-automation-Task
             npm install
-            npm install chromedriver --save-dev  # Ensure Chromedriver is installed
-            npm install nightwatch --save-dev   # Ensure Nightwatch is installed
       - run:
           name: Run Nightwatch tests
           command: npx nightwatch test
 
   api_tests:
     docker:
-      - image: node:14
+      - image: node:18.17.1-buster # Matching your local Node version
     steps:
       - checkout
       - run:
