@@ -38,8 +38,7 @@ jobs:
           name: Run Nightwatch Tests
           command: |
             cd QA-automation-Task
-            npm run test || true  # Prevent failure on known bugs
-
+            npm run test || true
   api_tests:
     docker:
       - image: cimg/node:18.17.1
