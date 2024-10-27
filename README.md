@@ -2,7 +2,7 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/srh-farghaly/QA-Automation-Project/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/srh-farghaly/QA-Automation-Project/tree/main)
 
 
-This repository contains a comprehensive QA automation project that integrates **UI testing** using NightwatchJS and **API testing** using Supertest and Jest. 
+This repository contains a comprehensive QA automation project that perform **UI testing** using NightwatchJS and **API testing** using Supertest and Jest. 
 
 ## Table of Contents
 - [Project Overview](#project-overview)
