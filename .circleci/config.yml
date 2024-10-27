@@ -49,15 +49,20 @@ jobs:
       - checkout
       - run:
           name: Install mock-user-auth Package
-          command: npm install --save mock-user-auth
+          command: |
+            cd supertest-jest-api
+            npm install --save mock-user-auth
       - run:
           name: Install Dependencies
-          command: npm install
+          command: |
+            cd supertest-jest-api 
+            npm install
       - run:
           name: Start API Server
           command: |
+            cd supertest-jest-api
             nohup npm run dev > server.log 2>&1 &  # Start in background
-            sleep 10                               # Wait for the server to start
+            sleep 15                               # Wait for the server to start
       - run:
           name: Verify Server is Running
           command: |
