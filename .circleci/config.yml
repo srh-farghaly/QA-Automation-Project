@@ -3,38 +3,42 @@ version: 2.1
 jobs:
   ui_tests:
     docker:
-      - image: node:18.17.1-buster # Use the same version as your local machine
-    working_directory: ~/QA-automation-Task # Set working directory for UI tests
+      - image: node:18.17.1-buster # Ensure same Node.js version as local
+    working_directory: ~/project/QA-automation-Task # Correct directory for the task
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: npm install # Install Nightwatch and other dependencies
+          name: Install dependencies for UI tests
+          command: |
+            cd QA-automation-Task  # Ensure you're in the correct directory
+            npm install
       - run:
           name: Run Nightwatch tests
           command: npx nightwatch --config nightwatch.json --env chrome
 
   api_tests:
     docker:
-      - image: node:18.17.1-buster # Same version to avoid compatibility issues
-    working_directory: ~/supertest-jest-api # Set working directory for API tests
+      - image: node:18.17.1-buster # Consistent Node version across jobs
+    working_directory: ~/project/supertest-jest-api # Correct directory for API tests
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: npm install # Install API test dependencies
+          name: Install dependencies for API tests
+          command: |
+            cd supertest-jest-api  # Navigate to the API folder
+            npm install
       - run:
           name: Start API server
-          command: npm run dev & # Start server in the background
+          command: npm run dev &
       - run:
           name: Run API tests
-          command: npm test # Run API tests
+          command: npm test
 
 workflows:
   version: 2
   pipeline:
     jobs:
-      - ui_tests # Run UI tests first
+      - ui_tests # UI tests first
       - api_tests:
           requires:
-            - ui_tests # Ensure API tests run after UI tests pass
+            - ui_tests # API tests after UI tests pass
