@@ -1,37 +1,40 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@4.7.0
-  browser-tools: circleci/browser-tools@1.1.0
-
 jobs:
   ui_tests:
     docker:
-      - image: cimg/node:lts-browsers # Use Node.js with browsers pre-installed
-    working_directory: ~/project/QA-automation-Task
+      - image: cimg/node:18.17.1
+    working_directory: ~/project
     steps:
-      - checkout # Pull the latest code
-      - browser-tools/install-browser-tools # Install browser tools
+      - checkout
       - run:
-          name: Install ChromeDriver via npm
-          command: npm install chromedriver --save-dev # Install ChromeDriver
-      - node/install-packages # Install project dependencies
+          name: List root directory files
+          command: ls -l
       - run:
-          name: Verify config file
-          command: ls -l nightwatch.json # Ensure config file exists
+          name: List files in QA-automation-Task
+          command: ls -l QA-automation-Task
+      - run:
+          name: Navigate to QA-automation-Task and install dependencies
+          command: |
+            cd QA-automation-Task
+            npm install
+      - run:
+          name: Verify node_modules exists
+          command: ls -l QA-automation-Task/node_modules
       - run:
           name: Run Nightwatch tests
-          command: |
-            mv nightwatch.json nightwatch.conf.js  # Rename config if needed
-            npx nightwatch --config nightwatch.conf.js --env default
+          command: npm run test
 
   api_tests:
     docker:
-      - image: cimg/node:lts # Use a standard Node.js image for API tests
+      - image: cimg/node:18.17.1 # Matching Docker image for consistency
     working_directory: ~/project/supertest-jest-api
     steps:
       - checkout
-      - node/install-packages # Install dependencies
+      - run:
+          name: Install dependencies for API tests
+          command: |
+            npm install
       - run:
           name: Start API server
           command: npm run dev &
@@ -41,7 +44,7 @@ jobs:
 
 workflows:
   version: 2
-  e2e-test:
+  pipeline:
     jobs:
       - ui_tests
       - api_tests:
