@@ -1,4 +1,4 @@
-    version: 2.1
+version: 2.1
 
 orbs:
   browser-tools: circleci/browser-tools@1.4.8
@@ -29,13 +29,11 @@ jobs:
           command: |
             cd QA-automation-Task
             npm install
-
       - run:
           name: Fix permissions
           command: |
             cd QA-automation-Task
             chmod -R 755 node_modules/.bin
-
       - run:
           name: Run Nightwatch Tests
           command: |
@@ -76,13 +74,6 @@ jobs:
             nohup npm run dev > server.log 2>&1 &  # Start in background
             sleep 15              
             cat server.log  # Output the server log for debugging
-                                                                    # Wait for the server to start
-      # - run:
-      #     name: Verify Server is Running
-      #     command: |
-      #       cd supertest-jest-api
-      #       curl --retry 5 --retry-connrefused -I http://localhost:3000 || (cat server.log && exit 1)
-
       - run:
           name: Run API Tests
           command: |
