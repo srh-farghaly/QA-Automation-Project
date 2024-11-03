@@ -2,7 +2,7 @@ module.exports = {
   url: "http://automationpractice.multiformis.com/index.php?controller=contact",
   elements: {
     subjectHeading: {
-      selector: "select#id_contact", // Use the correct ID-based selector
+      selector: "select#id_contact",
     },
     emailInput: {
       selector: "#email",

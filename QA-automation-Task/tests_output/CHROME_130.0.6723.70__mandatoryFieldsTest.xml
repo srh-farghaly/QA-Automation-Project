@@ -5,9 +5,9 @@
 
   <testsuite name="mandatoryFieldsTest"
     errors="0" failures="0" hostname="" id="" package="mandatoryFieldsTest" skipped="0"
-    tests="1" time="49.66" timestamp="">
+    tests="1" time="33.04" timestamp="">
   
-    <testcase name="Mandatory Fields Submission Test" classname="mandatoryFieldsTest" time="24.83" assertions="3">
+    <testcase name="Mandatory Fields Submission Test" classname="mandatoryFieldsTest" time="16.52" assertions="3">
 
     
 

@@ -5,9 +5,9 @@
 
   <testsuite name="descriptionUnderdropdown"
     errors="0" failures="0" hostname="" id="" package="descriptionUnderdropdown" skipped="0"
-    tests="1" time="39.03" timestamp="">
+    tests="1" time="27.20" timestamp="">
   
-    <testcase name="Validate Descriptive Text" classname="descriptionUnderdropdown" time="19.52" assertions="4">
+    <testcase name="Validate Descriptive Text" classname="descriptionUnderdropdown" time="13.60" assertions="4">
 
     
 

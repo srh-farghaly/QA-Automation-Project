@@ -59,7 +59,7 @@ describe("POST /users - Create User", () => {
 
     console.log("Missing Email Response:", response.body);
 
-    expect(response.status).toBe(401);
+    expect(response.status).toBe(400);
     expect(response.body).toHaveProperty("message", "Email is required");
   });
 

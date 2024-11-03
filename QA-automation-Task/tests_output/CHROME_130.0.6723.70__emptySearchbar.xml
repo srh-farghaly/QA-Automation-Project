@@ -5,9 +5,9 @@
 
   <testsuite name="emptySearchbar"
     errors="0" failures="0" hostname="" id="" package="emptySearchbar" skipped="0"
-    tests="1" time="35.09" timestamp="">
+    tests="1" time="13.72" timestamp="">
   
-    <testcase name="Empty Search Test" classname="emptySearchbar" time="17.55" assertions="3">
+    <testcase name="Empty Search Test" classname="emptySearchbar" time="6.860" assertions="3">
 
     
 
