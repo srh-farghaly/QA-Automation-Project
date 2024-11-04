@@ -1,7 +1,7 @@
 const path = require("path");
-
+// 	TC012 - User can leave the "order reference" Field empty and submit the form
 module.exports = {
-  "Empty Order Reference Test": function (browser) {
+  "Submit Form Without Order reference": function (browser) {
     const contactPage = browser.page.contact();
 
     contactPage

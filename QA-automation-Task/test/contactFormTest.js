@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   "Contact Us Form Test": function (browser) {
-    const contactPage = browser.page.contact();
+    const contactPage = browser.page.contact(); //page object reference
 
     contactPage
       .navigate()

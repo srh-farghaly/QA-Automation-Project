@@ -1,10 +1,12 @@
 const path = require("path");
+
+// 	TC04 - User cannot submit the form when uploading unsupported file type
 module.exports = {
   beforeEach: function (browser) {
     browser.refresh(); // Ensure a clean state
   },
 
-  "Invalid File Type Test": function (browser) {
+  "User cannot submit the form with invalid file type": function (browser) {
     const contactPage = browser.page.contact();
 
     contactPage

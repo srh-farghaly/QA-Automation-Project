@@ -1,5 +1,6 @@
 module.exports = {
-  "Empty Message Field Test": function (browser) {
+  // 	TC03 - User cannot submit the form with an empty message field
+  "Form submission fails with empty message field": function (browser) {
     const contactPage = browser.page.contact();
 
     contactPage

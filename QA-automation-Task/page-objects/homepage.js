@@ -10,5 +10,8 @@ module.exports = {
     searchResults: {
       selector: ".product_list", // Search results section
     },
+    alertWarning: {
+      selector: ".alert-warning", // Warning alert for empty search
+    },
   },
 };

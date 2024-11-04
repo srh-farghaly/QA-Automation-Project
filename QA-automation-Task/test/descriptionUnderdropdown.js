@@ -1,5 +1,8 @@
 module.exports = {
-  "Validate Descriptive Text": function (browser) {
+  // 	TC07 - User selects a subject heading and the corresponding description is displayed
+  "Displays correct description for selected subject heading": function (
+    browser
+  ) {
     const contactPage = browser.page.contact();
 
     contactPage
@@ -12,7 +15,7 @@ module.exports = {
         "For any question about a product, an order"
       ) // Validate the descriptive text
       .pause(4000)
-      // Optionally test other options
+
       .click('select#id_contact option[value="1"]') // Select "Webmaster"
       .waitForElementVisible("#desc_contact1", 5000) // Wait for the descriptive text
       .assert.containsText(

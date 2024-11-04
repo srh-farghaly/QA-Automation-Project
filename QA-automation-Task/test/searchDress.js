@@ -1,5 +1,7 @@
 module.exports = {
-  "Search Dress Test": function (browser) {
+  " User enters 'dress' in the searchbar in the home page ": function (
+    browser
+  ) {
     const homepage = browser.page.homepage();
 
     homepage
@@ -9,7 +11,6 @@ module.exports = {
       .click("@searchButton") // Click the search button
       .waitForElementVisible("@searchResults", 10000); // Wait for the search results to load
 
-    // Use 'findElements' to retrieve product names
     browser.findElements(
       "css selector",
       "h5 a.product-name",
@@ -22,7 +23,6 @@ module.exports = {
           let allProductsMatch = true; // Flag to check if all products match
 
           result.value.forEach(function (element) {
-            // Use elementIdText correctly to get the text of each product
             browser.elementIdText(
               element[Object.keys(element)[0]],
               function (textResult) {
@@ -50,7 +50,7 @@ module.exports = {
       }
     );
 
-    browser.pause(3000); // Optional pause for debugging
+    browser.pause(3000);
     browser.end(); // Close the browser session
   },
 };

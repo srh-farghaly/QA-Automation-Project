@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="emptyMessage"
+    errors="0" failures="0" hostname="" id="" package="emptyMessage" skipped="0"
+    tests="1" time="45.06" timestamp="">
+  
+    <testcase name="Form submission fails with empty message field" classname="emptyMessage" time="22.53" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

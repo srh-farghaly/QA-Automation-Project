@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="successSubmissionTest"
+    errors="0" failures="0" hostname="" id="" package="successSubmissionTest" skipped="0"
+    tests="1" time="35.09" timestamp="">
+  
+    <testcase name=" User submits the form successfully with all required fields filled" classname="successSubmissionTest" time="17.55" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

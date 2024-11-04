@@ -1,5 +1,7 @@
+//	TC013 - User submits the form with both "Attach File" and "Order Reference" fields left empty
+
 module.exports = {
-  "Mandatory Fields Submission Test": function (browser) {
+  "User submits the form with mandatory fields only": function (browser) {
     const contactPage = browser.page.contact();
 
     contactPage

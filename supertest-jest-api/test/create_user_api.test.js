@@ -44,8 +44,8 @@ describe("POST /users - Create User", () => {
       JSON.stringify(response.body, null, 2)
     );
 
-    expect(response.status).toBe(400); // Expected: 400 Bad Request
     expect(response.body).toHaveProperty("message", "Password is required");
+    expect(response.status).toBe(400); // Expected: 400 Bad Request
   });
 
   it("Verify that user creation fails when email is missing.", async () => {
@@ -59,8 +59,8 @@ describe("POST /users - Create User", () => {
 
     console.log("Missing Email Response:", response.body);
 
-    expect(response.status).toBe(400);
     expect(response.body).toHaveProperty("message", "Email is required");
+    expect(response.status).toBe(400);
   });
 
   it("Verify that duplicate user creation returns 'User already registered' with status 401.", async () => {

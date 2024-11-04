@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="emptySubjectHeadingTest"
+    errors="0" failures="0" hostname="" id="" package="emptySubjectHeadingTest" skipped="0"
+    tests="1" time="23.20" timestamp="">
+  
+    <testcase name="Form submission fails when not choosing a subject heading" classname="emptySubjectHeadingTest" time="11.60" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

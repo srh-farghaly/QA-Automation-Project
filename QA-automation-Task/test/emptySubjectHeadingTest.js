@@ -1,5 +1,7 @@
 module.exports = {
-  "Empty Subject Heading Test": function (browser) {
+  "Form submission fails when not choosing a subject heading": function (
+    browser
+  ) {
     const contactPage = browser.page.contact();
 
     contactPage

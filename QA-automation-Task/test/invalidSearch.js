@@ -1,17 +1,20 @@
 module.exports = {
-  "Invalid Search Test": function (browser) {
-    browser
-      .url("http://automationpractice.multiformis.com/") // Open homepage
-      .waitForElementVisible("#search_query_top", 5000) // Wait for search input
-      .setValue("#search_query_top", "xyz123") // Enter invalid search term
-      .click(".button-search") // Submit search
+  "User searches for a product with an invalid keyword": function (browser) {
+    const searchPage = browser.page.homepage(); // Load the page object
+
+    searchPage
+      .navigate() // Go to the URL specified in the Page Object
+      .waitForElementVisible("@searchBar", 5000) // Wait for search input to be visible
+      .setValue("@searchBar", "xyz123") // Enter invalid search term
+      .click("@searchButton") // Submit search
 
       // Verify the warning message is displayed
-      .waitForElementVisible(".alert-warning", 5000) // Wait for alert
+      .waitForElementVisible("@alertWarning", 10000) // Wait for alert
       .assert.containsText(
-        ".alert-warning",
+        "@alertWarning",
         'No results were found for your search "xyz123"'
-      )
-      .end(); // Close browser
+      ); // Verify the warning text
+
+    browser.end();
   },
 };

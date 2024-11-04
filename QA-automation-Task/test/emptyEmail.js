@@ -1,5 +1,6 @@
 module.exports = {
-  "Empty Email Test": function (browser) {
+  // 	TC06 - User cannot submit the form when the email field is left empty
+  "Form submission fails with empty email field": function (browser) {
     const contactPage = browser.page.contact();
 
     contactPage

@@ -1,5 +1,7 @@
 module.exports = {
-  "Invalid Email Test": function (browser) {
+  " User cannot submit the form with an invalid email address": function (
+    browser
+  ) {
     const contactPage = browser.page.contact();
 
     contactPage

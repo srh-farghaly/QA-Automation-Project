@@ -1,5 +1,6 @@
 module.exports = {
-  "File Attachment Left Empty Test": function (browser) {
+  // TC10 - User can leave the "Attach File" field empty and submits the form
+  "Submit Form Without File Attachment": function (browser) {
     const contactPage = browser.page.contact();
 
     contactPage
